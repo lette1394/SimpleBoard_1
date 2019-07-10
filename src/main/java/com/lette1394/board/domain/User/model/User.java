@@ -1,6 +1,8 @@
 package com.lette1394.board.domain.User.model;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Tolerate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,7 @@ import javax.validation.constraints.Email;
 
 @Data
 @Entity
+@Builder
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +28,7 @@ public class User {
     @Email
     @Column
     private String email;
+
+    @Tolerate
+    public User() {}
 }
