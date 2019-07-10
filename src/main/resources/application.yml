@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: local
+
+
+---
+spring:
+  profiles: test
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+server:
+  port: 10080
+
+
+docker:
+  testcontainer:
+    port: 20070
