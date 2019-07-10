@@ -1,21 +1,13 @@
 package com.lette1394.board.domain.User.repository;
 
-import com.lette1394.board.common.Constant;
-import com.lette1394.board.common.config.extension.TestContainerExtension;
+import com.lette1394.board.common.config.annotation.WithDockerClearAfterEachTest;
+import com.lette1394.board.common.config.annotation.WithDockerMySQL;
 import com.lette1394.board.domain.User.model.User;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
 
-@DataJpaTest
-@ActiveProfiles(Constant.TEST)
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-@ExtendWith(TestContainerExtension.class)
+@WithDockerMySQL
+@WithDockerClearAfterEachTest
 class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
