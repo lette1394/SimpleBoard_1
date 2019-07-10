@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @WithDockerMySQL
-@WithDockerClearAfterEachTest
 class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
