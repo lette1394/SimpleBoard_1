@@ -30,12 +30,15 @@ dependencies {
     compile("com.querydsl:querydsl-collections:${queryDSLVersion}")
 
     compile("org.projectlombok:lombok:1.18.8")
+    compile("org.postgresql:postgresql:42.2.6")
     compile("mysql:mysql-connector-java:8.0.16")
 
     testCompile("org.testcontainers:mysql:1.11.4")
     testCompile("org.testcontainers:junit-jupiter:1.11.4")
+    testCompile("com.playtika.testcontainers:embedded-postgresql:1.24")
 
     testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
+    testCompile("org.springframework.cloud:spring-cloud-starter:2.1.2.RELEASE")
 
     testCompile("org.assertj:assertj-core:3.12.2")
     testCompile("org.junit.jupiter:junit-jupiter-api:5.5.0")
@@ -59,7 +62,7 @@ idea {
 }
 
 sourceSets {
-    main.java.srcDirs += [ queryDslGenerated ]
+    main.java.srcDirs += [queryDslGenerated]
 }
 
 tasks.withType(JavaCompile) {

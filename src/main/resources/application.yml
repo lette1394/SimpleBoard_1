@@ -4,16 +4,26 @@ spring:
 
 ---
 spring:
-  profiles: test
+  profiles: embedded_db
 
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    driver-class-name: ${DB_DRIVER_CLASS_NAME}
+    url: jdbc:postgresql://${embedded.postgresql.host}:${embedded.postgresql.port}/${embedded.postgresql.schema}
+    username: ${embedded.postgresql.user}
+    password: ${embedded.postgresql.password}
+    driver-class-name: org.postgresql.Driver
+    tomcat:
+      test-on-borrow: true
+      test-on-connect: true
+      validation-query: SELECT 1
+
   jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
     hibernate:
       ddl-auto: create-drop
+
 
 server:
   port: 10080

@@ -1,34 +1,34 @@
 package com.lette1394.board.common.config.repository;
 
-public class BoardMySQLContainer extends org.testcontainers.containers.MySQLContainer<BoardMySQLContainer> {
-    private static final String IMAGE_VERSION = "mysql:8.0";
+import lombok.extern.slf4j.Slf4j;
+import org.testcontainers.containers.MySQLContainer;
 
-    public static final BoardMySQLContainer INSTANCE = new BoardMySQLContainer();
+@Slf4j
+public class BoardMySQLContainer extends MySQLContainer<BoardMySQLContainer> {
+
+    private static final String IMAGE_VERSION = "mysql:8.0";
 
     public BoardMySQLContainer() {
         super(IMAGE_VERSION);
+        withUsername("testadmin");
+        withPassword("admin123123");
+        withDatabaseName("testdb");
     }
 
     @Override
     public void start() {
         super.start();
-        System.setProperty("DB_URL", INSTANCE.getJdbcUrl());
-        System.setProperty("DB_USERNAME", INSTANCE.getUsername());
-        System.setProperty("DB_PASSWORD", INSTANCE.getPassword());
-        System.setProperty("DB_DRIVER_CLASS_NAME", INSTANCE.getDriverClassName());
+        log.info("===== test container started =====");
     }
 
     @Override
     public void stop() {
         super.stop();
+        log.info("===== test container stopped =====");
     }
 
     @Override
     public String getDriverClassName() {
         return "com.mysql.cj.jdbc.Driver";
-    }
-
-    public void init() {
-        start();
     }
 }
