@@ -1,4 +1,4 @@
-package com.lette1394.board.common.config.annotation;
+package com.lette1394.board.common.annotation;
 
 import org.springframework.test.annotation.Rollback;
 

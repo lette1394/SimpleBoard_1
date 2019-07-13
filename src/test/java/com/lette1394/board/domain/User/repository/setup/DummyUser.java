@@ -1,10 +1,11 @@
-package com.lette1394.board.common.config.dummy;
+package com.lette1394.board.domain.User.repository.setup;
 
-import com.lette1394.board.domain.User.model.User;
-import com.lette1394.board.domain.User.repository.UserRepository;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.lette1394.board.domain.User.model.User;
+import com.lette1394.board.domain.User.repository.UserRepository;
 
 public class DummyUser implements BeforeAllCallback {
     @Override

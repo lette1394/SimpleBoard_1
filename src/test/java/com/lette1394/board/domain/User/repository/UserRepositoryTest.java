@@ -1,17 +1,18 @@
 package com.lette1394.board.domain.User.repository;
 
-import com.lette1394.board.common.config.annotation.DataJpaEmbeddedTest;
-import com.lette1394.board.common.config.dummy.DummyUser;
-import com.lette1394.board.domain.User.model.User;
+import javax.annotation.Resource;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.testcontainers.containers.GenericContainer;
 
-import javax.annotation.Resource;
+import com.lette1394.board.common.annotation.DataJpaEmbeddedTest;
+import com.lette1394.board.common.annotation.NoRollback;
+import com.lette1394.board.domain.User.model.User;
+import com.lette1394.board.domain.User.repository.setup.DummyUser;
 
-@Rollback(false)
+@NoRollback
 @DataJpaEmbeddedTest
 @ExtendWith(DummyUser.class)
 class UserRepositoryTest {
