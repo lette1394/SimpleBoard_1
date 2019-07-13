@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 
 import com.lette1394.board.common.service.FindService;
 import com.lette1394.board.domain.User.model.User;
-import com.lette1394.board.domain.User.repository.UserRepository;
 
 @RestController
 @RequiredArgsConstructor
