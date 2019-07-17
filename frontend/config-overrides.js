@@ -1,4 +1,5 @@
-const { override, fixBabelImports, addLessLoader } = require('customize-cra');
+const path = require('path');
+const { override, fixBabelImports, addLessLoader, addWebpackAlias } = require('customize-cra');
 
 const { theme } = require('./config/antd/theme');
 
