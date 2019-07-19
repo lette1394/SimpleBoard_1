@@ -30,6 +30,7 @@ const styledHeader = styled(Header)`
   display: flex;
   height: 5vh;
   padding: 0.5em 0.8em 0 0.8em;
+  border-bottom: 0.5px solid #aaaaaa;
  
   img {
     max-width: 100%;
@@ -38,7 +39,7 @@ const styledHeader = styled(Header)`
   
   #menu {
     flex: 1 0 70%;
-    padding: 10px 0 0;
+    padding: 0.5em 0 0;
     text-align: right;
     font-weight: 600;
     font-size: 0.9em;
