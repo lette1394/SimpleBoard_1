@@ -5,17 +5,16 @@ import { Export } from 'styled-icons/boxicons-regular/Export';
 import { Heart } from 'domain/icon/Heart';
 import { Bookmark } from 'domain/icon/Bookmark';
 import { CommentInputModal } from 'domain/post/comment/modal/CommentInputModal';
+import { Contents } from 'domain/post/core/Contents';
 
 // TODO: 폰트 flickering 해결
 // TODO: Icon 폴더 따로 빼기
-const PostView: React.FC = ({ className }: any): any => {
+const Post: React.FC = ({ className }: any): any => {
   const [status, setStatus] = useState(false);
   return (
     <div className={className}>
-      {/*<section className={`header`}>*/}
-      {/*  */}
-      {/*</section>*/}
       <CommentInputModal />
+      <Contents  />
       <section className={`contents`}>
         <div className={`user-id underline`}>
           <span>mynickname</span>
@@ -81,7 +80,7 @@ const PostView: React.FC = ({ className }: any): any => {
 };
 
 const MARGIN_SIZE = '1em';
-const StyledPostView = styled(PostView)`
+const StyledPost = styled(Post)`
   .hr {
     border: 0.5px solid #aaaaaa;
     width: 60%;
@@ -165,4 +164,4 @@ const StyledPostView = styled(PostView)`
   }
   
 `;
-export { StyledPostView as PostView };
+export { StyledPost as Post };

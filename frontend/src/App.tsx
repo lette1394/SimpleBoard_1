@@ -1,7 +1,8 @@
 import React from 'react';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import './App.css';
 import 'static/css/reset.css';
-import { PostView } from 'domain/post/view/PostView';
+import { Post } from 'domain/post/core/Post';
 import { Footer } from 'view/footer/Footer';
 import { Header } from 'view/header/Header';
 import styled from 'styled-components';
@@ -12,11 +13,30 @@ interface Props extends Theme {
 
 const App: React.FC<Props> = ({ className, ...props }: Props) => {
   return (
-    <div className={`App ${className}`}>
-      <Header />
-      <PostView />
-      <Footer />
-    </div>
+    <Router>
+      <div className={`App ${className}`}>
+        <Header />
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/timeline">Timeline</Link>
+        </li>
+        <li>
+          <Link to="/comment">Comments</Link>
+        </li>
+
+        <Route path={`/`}
+               exact={true}
+               component={Post} />
+        <Route path={`/timeline`}
+               component={Post} />
+        <Route path={`/comment`}
+               component={Post} />
+
+        <Footer />
+      </div>
+    </Router>
   );
 };
 

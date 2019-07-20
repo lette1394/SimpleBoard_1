@@ -36,7 +36,7 @@ const CommentInputModal: FC<Props> = ({
 };
 
 const StyledCommentInputModal = styled(CommentInputModal)`
-    z-index: 1000; 
+    z-index: 1000;  
     border: 1px solid black;
 `;
 
