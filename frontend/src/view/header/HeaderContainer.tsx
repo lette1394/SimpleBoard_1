@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import PostContainer from 'domain/post/PostContainer';
 import Theme from 'theme';
 
 interface Prop extends Theme {
@@ -14,7 +13,6 @@ const HeaderContainer: FC<Prop> = (props, context) => {
   return (
     <div className={props.className}>
       hello world
-      <PostContainer />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'static/css/reset.css';
-import { PostView } from 'domain/post/PostView';
+import { PostView } from 'domain/post/view/PostView';
 import { Footer } from 'view/footer/Footer';
 import { Header } from 'view/header/Header';
 import styled from 'styled-components';

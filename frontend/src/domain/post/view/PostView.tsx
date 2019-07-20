@@ -4,17 +4,18 @@ import { Comment } from 'styled-icons/boxicons-regular/Comment';
 import { Export } from 'styled-icons/boxicons-regular/Export';
 import { Heart } from 'domain/icon/Heart';
 import { Bookmark } from 'domain/icon/Bookmark';
+import { CommentInputModal } from 'domain/post/comment/modal/CommentInputModal';
 
 // TODO: 폰트 flickering 해결
 // TODO: Icon 폴더 따로 빼기
 const PostView: React.FC = ({ className }: any): any => {
-
+  const [status, setStatus] = useState(false);
   return (
     <div className={className}>
       {/*<section className={`header`}>*/}
       {/*  */}
       {/*</section>*/}
-
+      <CommentInputModal />
       <section className={`contents`}>
         <div className={`user-id underline`}>
           <span>mynickname</span>
@@ -28,19 +29,21 @@ const PostView: React.FC = ({ className }: any): any => {
         <section className={`buttons`}>
           <Heart size={`1.8em`} />
           <Bookmark size={`1.8em`} />
-          <Comment size={`1.8em`} />
+          <div onClick={() => {
+            setStatus(!status);
+          }}>
+            <Comment size={`1.8em`} />
+          </div>
           <Export size={`1.8em`} />
         </section>
         <section className={`statistics`}>
-          <span>2d</span>
           <span>2,115 likes</span>
-          <span>34 replies</span>
         </section>
-        <section className={`tags`}>
-          <span>#국회</span>
-          <span>#헌법재판소</span>
-          <span>#헌법개정안60일</span>
-        </section>
+        {/*<section className={`tags`}>*/}
+        {/*  <span>#국회</span>*/}
+        {/*  <span>#헌법재판소</span>*/}
+        {/*  <span>#헌법개정안60일</span>*/}
+        {/*</section>*/}
       </div>
       <div className={`hr`} />
       <section className={`comments-thread`}>
@@ -79,7 +82,6 @@ const PostView: React.FC = ({ className }: any): any => {
 
 const MARGIN_SIZE = '1em';
 const StyledPostView = styled(PostView)`
-
   .hr {
     border: 0.5px solid #aaaaaa;
     width: 60%;
