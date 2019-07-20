@@ -36,6 +36,11 @@ const PostView: React.FC = ({ className }: any): any => {
           <span>2,115 likes</span>
           <span>34 replies</span>
         </section>
+        <section className={`tags`}>
+          <span>#국회</span>
+          <span>#헌법재판소</span>
+          <span>#헌법개정안60일</span>
+        </section>
       </div>
       <div className={`hr`} />
       <section className={`comments-thread`}>
@@ -103,8 +108,8 @@ const StyledPostView = styled(PostView)`
   .controls {
     display: flex;
     flex-direction: column;
-    > * {
-      margin: 0.3em 0;
+    >:first-child {
+      margin: 0 0 0.5em 0;
     }
   }
   
@@ -122,14 +127,18 @@ const StyledPostView = styled(PostView)`
     }
   }
   
-  section.statistics {
+  section.statistics, section.tags {
     font-size: 0.9em;
     font-weight: bold;
     
     >:nth-child(n) {
-      margin: 0 1em 0 0;
+      margin: 0 0.5em 0 0;
     }
   }
+  
+   section.tags {
+     color: #003569; 
+   }
   
   section.comments-thread {
     font-size: 0.9em;
@@ -144,12 +153,12 @@ const StyledPostView = styled(PostView)`
         font-size: 0.9em;
         font-weight: bold;
         margin: 0 0 0 0.5em;
-        color: #444444;
+        color: #003569;
       }
     }
     
     .more {
-      color: #aaaaaa;
+      color: #003569;
     }
   }
   
