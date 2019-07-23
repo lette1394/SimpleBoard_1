@@ -4,10 +4,15 @@ export default interface Theme {
   className?: string;
 }
 
-export const withClassName = (Component: React.ComponentType<any>) => {
-  return ({ className }: Theme) => (
-    <div className={className}>
-      <Component />
-    </div>
-  );
-};
+export function withClassName<P>(Component: React.ComponentType<P>) {
+  return class WithClassName extends React.Component<P & Theme, P> {
+    render() {
+      const { className, ...props } = this.props;
+      return (
+        <div className={className}>
+          <Component {...props as P} />
+        </div>
+      );
+    }
+  };
+}

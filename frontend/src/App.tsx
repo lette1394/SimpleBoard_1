@@ -2,11 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import './App.css';
 import 'static/css/reset.css';
-import { Post } from 'domain/post/core/Post';
+import { Post } from 'domain/post/Post';
 import { Footer } from 'view/footer/Footer';
 import { Header } from 'view/header/Header';
 import styled from 'styled-components';
 import Theme from 'theme';
+import { CommentInputModal } from 'domain/post/comment/modal/CommentInputModal';
 
 interface Props extends Theme {
 }
@@ -14,6 +15,7 @@ interface Props extends Theme {
 const App: React.FC<Props> = ({ className, ...props }: Props) => {
   return (
     <Router>
+      <CommentInputModal />
       <div className={`App ${className}`}>
         <Header />
         <li>
