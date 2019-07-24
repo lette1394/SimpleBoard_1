@@ -13,7 +13,7 @@ export const setMessage = createActionCreator(
 
 
 const defaultState = {
-  visible: false,
+  visible: true,
   message: 'this is input box 123',
 };
 

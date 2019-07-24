@@ -4,8 +4,10 @@ import { Contents } from 'domain/post/contents/Contents';
 import { Controls } from 'domain/post/controls/Controls';
 import { CommentList } from 'domain/post/comment/list/CommentList';
 import { withClassName } from 'theme';
+import { CommentInputModal } from 'domain/post/comment/modal/CommentInputModal';
 
 // TODO: 폰트 flickering 해결
+// TODO: useContext - React.createContext;
 const Post: React.FC = () => {
   return (
     <>
@@ -18,6 +20,7 @@ const Post: React.FC = () => {
       <Controls />
       <div className={`hr`} />
       <CommentList />
+      <CommentInputModal />
     </>
   );
 };

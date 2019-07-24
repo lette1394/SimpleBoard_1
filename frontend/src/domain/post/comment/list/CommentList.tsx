@@ -41,9 +41,9 @@ type Props = Theme
   & StateProps
   & DispatchProps;
 
-const CommentList: FC<Props> = () => {
+const CommentList: FC<Props> = ({ className }) => {
     return (
-      <section>
+      <div className={className}>
         {dummyData.map(d =>
           (<CommentItem nickname={d.nickname}
                         isAuthor={d.author}>
@@ -51,19 +51,19 @@ const CommentList: FC<Props> = () => {
           </CommentItem>),
         )}
         <MoreReplies />
-      </section>
+      </div>
     );
   }
 ;
 
-const StyledCommentList = styled(withClassName(CommentList))`
+const StyledCommentList = styled(CommentList)`
   font-size: 0.9em;
   line-height: 130%;
   
-  section > *:nth-child(n) {
+  >:nth-child(n) {
     margin: 0.5em 0;
   }
-  section >:first-child {
+  >:first-child {
     margin: 0 0 0.5em 0;
   }
 `;

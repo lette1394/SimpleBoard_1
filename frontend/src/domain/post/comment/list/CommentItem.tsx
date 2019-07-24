@@ -1,37 +1,36 @@
 import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
-import { withClassName } from 'theme';
+import Theme, { withClassName } from 'theme';
 import { UserTitle } from 'domain/post/user/UserTitle';
 
-type Props = ReactNode & {
+type Props = Theme & ReactNode & {
   nickname: string;
   replyCount?: number;
   isAuthor?: boolean;
 };
 
 const CommentItem: FC<Props> = ({
+                                  className,
                                   nickname,
                                   replyCount,
                                   isAuthor,
                                   children,
                                 }) => {
   return (
-    <>
+    <div className={`${className}`}>
       <UserTitle nickname={nickname}
                  isAuthor={isAuthor} />
-      <div className={`body`}>
+      <span>
         {children}
-      </div>
-      {replyCount ? <span className={`reply-count`}>5</span> : null}
-    </>
+      </span>
+      <span>
+        <span className={`reply-count`}>{replyCount ? 5 : null}</span>
+      </span>
+    </div>
   );
 };
 
-const StyledComponent = styled(withClassName(CommentItem))`
-  div.body {
-    display: inline;
-  }
-  
+const StyledComponent = styled(CommentItem)`
   .reply-count {
     font-size: 0.9em;
     font-weight: bold;

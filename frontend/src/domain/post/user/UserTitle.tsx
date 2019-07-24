@@ -1,28 +1,25 @@
 import React, { FC } from 'react';
-import { withClassName } from 'theme';
+import Theme from 'theme';
 import styled from 'styled-components';
 
-type Props = {
+type Props = Theme & {
   nickname: string;
   isAuthor?: boolean;
 }
-const UserTitle: FC<Props> = ({ nickname, isAuthor = false }) => {
+const UserTitle: FC<Props> = ({ className, nickname, isAuthor = false }) => {
   const underline = isAuthor ? `underline` : ``;
   return (
-    <span className={`user-id ${underline}`}>
-      <span>{nickname}</span>
+    <span className={`user-id ${className}`}>
+      <span className={`${underline}`}>{nickname}</span>
     </span>
   );
 };
 
-const StyledComponent = styled(withClassName(UserTitle))`
+const StyledComponent = styled(UserTitle)`
   display: inline;
-  
-  .user-id {
-    margin: 0 0.5em 0 0;
-    font-weight: bold;
-  }
-  
+  margin: 0 0.5em 0 0;
+  font-weight: bold;
+
   .underline {
     text-decoration: underline #000000;
   }

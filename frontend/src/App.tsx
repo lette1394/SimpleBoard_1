@@ -7,7 +7,6 @@ import { Footer } from 'view/footer/Footer';
 import { Header } from 'view/header/Header';
 import styled from 'styled-components';
 import Theme from 'theme';
-import { CommentInputModal } from 'domain/post/comment/modal/CommentInputModal';
 
 interface Props extends Theme {
 }
@@ -15,7 +14,6 @@ interface Props extends Theme {
 const App: React.FC<Props> = ({ className, ...props }: Props) => {
   return (
     <Router>
-      <CommentInputModal />
       <div className={`App ${className}`}>
         <Header />
         <li>

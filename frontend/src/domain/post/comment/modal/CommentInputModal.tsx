@@ -1,10 +1,12 @@
 import React, { FC, useEffect, useRef } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Theme from 'theme';
 import { State } from 'state';
 import { setMessage, setVisible } from './state';
-
+import { ModalBody } from 'domain/post/comment/modal/ModalBody';
+import { Send } from 'styled-icons/boxicons-regular/Send';
 
 type StateProps = {
   visible: boolean;
@@ -26,43 +28,52 @@ const CommentInputModal: FC<Props> = ({
                                         message, setMessage,
                                       }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
 
-  const outside = (event: MouseEvent) => {
-    console.log("aaaaaaa");
+  const outside = (event: Event) => {
     if (containerRef.current && !containerRef.current.contains(event.target as Element)) {
       setVisible(false);
-      console.log("bbbbb");
     }
   };
-  useEffect(() => {
-    if (inputRef && inputRef.current) {
-      inputRef.current.focus();
-      document.addEventListener('click', outside);
-    }
 
+  useEffect(() => {
+    document.addEventListener('touchstart', outside);
     return () => {
-      document.removeEventListener('click', outside);
+      document.removeEventListener('touchstart', outside);
     };
   });
 
-  const body = (
-    <div className={className}>
-      <span onClick={() => setVisible(false)}>click to hide</span>
-      <input ref={inputRef} />
+  const modal = visible ? (
+    <div className={className}
+         ref={containerRef}>
+      <div>
+        <Send size={'0.9em'} />
+      </div>
+      <ModalBody />
+      <div>
+        SEND
+      </div>
     </div>
-  );
-  return (
-    <div ref={containerRef}>
-      {visible ? body : <span onClick={() => setVisible(true)}>{message}</span>}
-    </div>
+  ) : null;
+
+  return ReactDOM.createPortal(
+    modal,
+    document.getElementById('modal-root') as Element,
   );
 };
 
 const StyledCommentInputModal = styled(CommentInputModal)`
     z-index: 1000;  
-    border: 1px solid black;
     position: absolute;
+    width: 100vw;
+    max-height: 30vh;
+    box-sizing: border-box;
+    
+    font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', Sans-serif, sans-serif;
+    line-height: 140%;
+    font-size: 16px;
+    
+    bottom: 0;
+    display: flex;
 `;
 
 
